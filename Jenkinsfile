@@ -3,7 +3,7 @@ node('simplicify-ec2-ubuntu'){
             git url: 'git://git.openembedded.org/meta-openembedded'
             git branch: 'pyro', url: 'git://git.yoctoproject.org/meta-raspberrypi.git'
             git branch: 'pyro', url: 'git://git.yoctoproject.org/poky.git'
-            sh 'mv meta-* poky'
+            sh 'ls'
             sh 'source poky/oe-init-build-env'
             sh 'cp ~/image_builds/conf/bblayers.conf conf/'
             sh 'bitbake'
