@@ -6,5 +6,6 @@ node('simplicify-ec2-ubuntu'){
             sh: 'mv meta-* poky'
             sh: 'source poky/oe-init-build-env'
             sh: 'cp ~/image_builds/conf/bblayers.conf conf/'
+            sh: 'bitbake'
         }
 }
