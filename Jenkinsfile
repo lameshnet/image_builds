@@ -4,7 +4,7 @@ node('simplicify-ec2-ubuntu'){
                 sh 'mkdir image_builds'
 
             }
-            
+
             dir('image_builds'){
                 checkout scm
             }
@@ -25,7 +25,7 @@ node('simplicify-ec2-ubuntu'){
 
             git branch: 'pyro', url: 'git://git.yoctoproject.org/poky.git'
             sh 'ls'
-            sh '. ./oe-init-build-env'
+            sh 'set +e; . ./oe-init-build-env'
             sh 'cp ~/image_builds/conf/bblayers.conf conf/'
             sh 'bitbake'
         }
