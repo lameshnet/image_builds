@@ -21,7 +21,7 @@ node('simplicify-ec2-ubuntu'){
 
             git branch: 'pyro', url: 'git://git.yoctoproject.org/poky.git'
             sh 'ls'
-            sh 'source oe-init-build-env'
+            sh '. ./oe-init-build-env'
             sh 'cp ~/image_builds/conf/bblayers.conf conf/'
             sh 'bitbake'
         }
