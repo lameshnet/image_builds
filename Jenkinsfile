@@ -1,5 +1,6 @@
 node('simplicify-ec2-ubuntu'){
         stage('Setup Env') {
+            checkout scm
             checkout([$class: 'GitSCM',
                 branches: [[name: '*/master']],
                 doGenerateSubmoduleConfigurations: false,
@@ -17,7 +18,7 @@ node('simplicify-ec2-ubuntu'){
 
             git branch: 'pyro', url: 'git://git.yoctoproject.org/poky.git'
             sh 'ls'
-            sh 'source poky/oe-init-build-env'
+            sh 'source oe-init-build-env'
             sh 'cp ~/image_builds/conf/bblayers.conf conf/'
             sh 'bitbake'
         }
