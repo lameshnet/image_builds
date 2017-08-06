@@ -1,6 +1,10 @@
 node('simplicify-ec2-ubuntu'){
         stage('Setup Env') {
-            sh 'mkdir image_builds'
+            if (!fileExists('image_builds')){
+                sh 'mkdir image_builds'
+
+            }
+            
             dir('image_builds'){
                 checkout scm
             }
