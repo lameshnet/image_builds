@@ -1,6 +1,13 @@
 node('simplicify-ec2-ubuntu'){
         stage('Setup Env') {
-            git url: 'git://git.openembedded.org/meta-openembedded'
+        checkout([$class: 'GitSCM',
+        branches: [[name: '*/master']],
+        doGenerateSubmoduleConfigurations: false,
+        extensions: [[$class: 'RelativeTargetDirectory',
+            relativeTargetDir: 'meta-openembedded']],
+        submoduleCfg: [],
+        userRemoteConfigs: [[url: 'git://git.openembedded.org/meta-openembedded']]])
+
             sh 'ls'
             git branch: 'pyro', url: 'git://git.yoctoproject.org/meta-raspberrypi.git'
             sh 'ls'
