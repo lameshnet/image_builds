@@ -1,6 +1,9 @@
 node('simplicify-ec2-ubuntu'){
         stage('Setup Env') {
-            checkout scm
+            sh 'mkdir image_builds'
+            dir('image_builds'){
+                checkout scm
+            }
             checkout([$class: 'GitSCM',
                 branches: [[name: '*/master']],
                 doGenerateSubmoduleConfigurations: false,
